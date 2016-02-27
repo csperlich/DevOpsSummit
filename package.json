@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/csperlich/DevOpsSummit/issues"
   },
-  "homepage": "https://github.com/csperlich/DevOpsSummit#readme"
+  "homepage": "https://github.com/csperlich/DevOpsSummit#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
 }
