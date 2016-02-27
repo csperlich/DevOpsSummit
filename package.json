@@ -1,0 +1,24 @@
+{
+  "name": "dev-ops-summit",
+  "version": "1.0.0",
+  "description": "Application for registration to Acme Global Summit DevOps Conference",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csperlich/DevOpsSummit.git"
+  },
+  "keywords": [
+    "Node.js",
+    "MongoDB",
+    "Awesome"
+  ],
+  "author": "Cade Sperlich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csperlich/DevOpsSummit/issues"
+  },
+  "homepage": "https://github.com/csperlich/DevOpsSummit#readme"
+}
