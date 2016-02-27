@@ -3,7 +3,6 @@ var express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
     config = require('./config/config'),
-    methodOverride = require('method-override'),
     port = config.defaultPort || 8080;
 
 app.set('views', './app/views');
@@ -14,7 +13,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(bodyParser.json());
-app.use(methodOverride());
 
 if (config.logging) {
   app.use(morgan('dev'));
