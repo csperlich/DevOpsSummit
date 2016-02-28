@@ -1,9 +1,12 @@
 var express = require('express'),
     morgan = require('morgan'),
     app = express(),
+    mongoose = require('./config/mongoose'),
     bodyParser = require('body-parser'),
     config = require('./config/config'),
     port = config.defaultPort || 8080;
+
+var db = mongoose();
 
 app.set('views', './app/views');
 app.set('view engine', 'ejs');
@@ -19,13 +22,14 @@ if (config.logging) {
 }
 
 require('./app/routes/common.routes')(app);
+require('./app/routes/user.routes')(app);
 
 app.use(express.static('./public'));
-/*
+
 app.use(function(req, res, next) {
   res.status(404);
   res.render('common/pages/404', {url: req.url});
 });
-*/
+
 app.listen(port);
 console.log('listening on port ' + port);
