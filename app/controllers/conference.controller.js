@@ -6,7 +6,20 @@ exports.conferenceByName = function(req, res, next) {
     name: req.body.conferenceName
   }, function(err, conference) {
     if (err) {
-      console.log('conference by name failure');
+      return next(err);
+    } else {
+      req.conference = conference;
+      next();
+    }
+  });
+};
+
+exports.conferenceById = function(req, res, next) {
+  console.log('conferenceById');
+  Conference.findOne({
+    _id: req.conferenceID
+  }, function(err, conference) {
+    if (err) {
       return next(err);
     } else {
       req.conference = conference;

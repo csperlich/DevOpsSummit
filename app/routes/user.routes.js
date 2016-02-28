@@ -9,4 +9,6 @@ module.exports = function(app) {
   app.route('/user/unregister')
     .post(user.userByEmail, conference.conferenceByName, user.unRegister);
 
+  app.route('/user/checkReservation')
+    .post(user.userByConfirmationNumber, conference.conferenceById, user.sendReservation);
 };

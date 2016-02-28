@@ -6,7 +6,6 @@
 <body>
   <header>
     <% include ../partials/header %>
-    <link rel="stylesheet" href="/styles/main.css" media="screen" title="no title" charset="utf-8">
   </header>
   <div class="container">
     <div class="register-unregister-status">
@@ -76,9 +75,9 @@
             <div class="col-sm-12">
               <article role="interact">
                 <h3 class="text-center">Check Status</h3>
-                <form class="register" action="index.html" method="post">
+                <form class="register" action="/user/checkReservation" method="post">
                   <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email Address">
+                    <input type="text" class="form-control" name="confirmationNumber" placeholder="ConfirmationNumber: e.g. 1LN6T570EI4AL52X65V5E ">
                   </div>
                   <div class="form-group">
                     <input type="submit" class="btn btn-success btn-block"  value="SUBMIT">
@@ -93,6 +92,5 @@
     <footer>
       <% include ../partials/footer %>
     </footer>
-
   </body>
-  </html>
+</html>

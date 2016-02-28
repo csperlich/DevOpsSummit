@@ -69,3 +69,27 @@ exports.userByEmail = function(req, res, next) {
     }
   });
 };
+
+exports.userByConfirmationNumber = function(req, res, next) {
+  console.log('in userByConfirmationNumber');
+  User.findOne({
+    'registrations.confirmationNumber': req.body.confirmationNumber
+  }, function(err, user) {
+    if (err) {
+      return next(err);
+    } else {
+      req.user = user;
+      for (var i = 0; i < user.registrations.length; i++) {
+        if (user.registrations[i].confirmationNumber === req.body.confirmationNumber) {
+          req.conferenceID= user.registrations[i].registrationID;
+          break;
+        }
+      }
+      next();
+    }
+  });
+};
+
+exports.sendReservation = function(req, res, next) {
+  res.json(req.conference);
+};
