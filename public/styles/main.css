@@ -12,7 +12,7 @@
   color: #23BAB5;
 }
 
-article[role="interact"] {
+article[role="interact"], article[role="status"] {
   background: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 10px rgba(0, 0, 0, 0.24);
@@ -27,11 +27,15 @@ article[role="interact"] input[type="submit"] {
   font-size: 1.1em;
 }
 
-article[role="interact"] h3 {
+article[role="interact"] h3, article[role="status"] h3 {
   font-size: 2em;
   font-weight: 300;
   color: #23bab5;
   margin-bottom: 20px;
+}
+
+article[role="status"] .row {
+  font-size: 1.2em;
 }
 
 .nav-tab-holder {
@@ -51,19 +55,29 @@ article[role="interact"] h3 {
   float: none;
 }
 
-.nav-tab-holder .nav-tabs > li > a {
+.nav-tab-holder .nav-tabs > li > a, article[role="status"] .row div:first-child{
   background: #d9d9d9;
   color: #6c6c6c;
-  margin: 1px;
   font-size: 1.2em;
   font-weight: 300;
+}
+
+.nav-tab-holder .nav-tabs > li > a {
+  margin: 1px;
+}
+
+article[role="status"] .row div:first-child {
+  margin-bottom: 2px;
 }
 
 .nav-tab-holder .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
   color: #FFF;
   background-color: #23bab5;
 }
-
+.fa-check {
+  color: green;
+  margin-left: 5px;
+}
 .nav-tab-holder {
   float: none;
 }

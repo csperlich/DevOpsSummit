@@ -7,6 +7,6 @@ module.exports = function() {
 
 	require('../app/models/users/user.model');
 	require('../app/models/conferences/conference.model');
-
+  require('../app/models/users/admin.model');
 	return db;
 };

@@ -8,6 +8,9 @@ exports.conferenceByName = function(req, res, next) {
     if (err) {
       return next(err);
     } else {
+      if (!conference) {
+        next({errmsg:"invalid conference name"});
+      }
       req.conference = conference;
       next();
     }
