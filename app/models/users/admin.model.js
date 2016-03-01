@@ -47,6 +47,8 @@ AdminSchema.methods.hashPassword = function(password) {
 };
 
 AdminSchema.methods.authenticate = function(password) {
+  console.log('in authenticate');
+  console.log(this.hashPassword(password));
   return this.password === this.hashPassword(password);
 };
 

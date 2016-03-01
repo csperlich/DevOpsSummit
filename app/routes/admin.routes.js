@@ -7,7 +7,7 @@ module.exports = function(app) {
     .get(function(req, res, next) {
       res.render('common/pages/admin-login');
     })
-    .post(admin.validate);
+    .post(admin.adminByEmail, admin.validate);
 
   app.route('/admin/register')
     .get(function(req, res, next) {
