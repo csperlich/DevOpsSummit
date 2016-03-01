@@ -4,7 +4,10 @@ var express = require('express'),
     mongoose = require('./config/mongoose'),
     bodyParser = require('body-parser'),
     config = require('./config/config'),
-    port = config.defaultPort || 8080;
+    session = require("express-session"),
+    port = config.defaultPort || 8080,
+    secretKey = config.cookieKey || 'NOTSOSECRET',
+    cookieAge = config.cookieAge || 600000; //default 10 minutes
 
 var db = mongoose();
 
@@ -20,6 +23,18 @@ app.use(bodyParser.json());
 if (config.logging) {
   app.use(morgan('dev'));
 }
+
+//setup the session
+app.use(session(
+  {
+    resave: true,
+    saveUninitialized: true,
+    secret: secretKey,
+    cookie: {
+      maxAge: cookieAge
+    }
+  }
+));
 
 require('./app/routes/common.routes')(app);
 require('./app/routes/user.routes')(app);

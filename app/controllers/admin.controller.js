@@ -42,3 +42,17 @@ exports.create = function(req, res, next) {
     }
   });
 };
+
+exports.startSession = function(req, res, next) {
+  req.session.admin = req.admin;
+  next();
+};
+
+exports.checkForSession = function(req, res, next) {
+  console.log("admin.controller.checkForSession");
+  if (!req.session.admin) {
+    res.render('common/pages/forbidden');
+  } else {
+    next();
+  }
+};
