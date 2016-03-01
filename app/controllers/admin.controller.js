@@ -7,9 +7,11 @@ exports.validate = function(req, res, next) {
 
 exports.create = function(req, res, next) {
   console.log('in create');
-  var name = req.body.name;
+
+  var email = req.body.email;
   var password = req.body.password;
-  var admin = new Admin({name:name, password:password});
+  console.log(req.body);
+  var admin = new Admin({email:email, password:password});
   admin.save(function(err, admin) {
     if (err) {
       return next(err);

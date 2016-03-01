@@ -3,12 +3,13 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 var AdminSchema = new Schema({
-	name:  {
-    type: String,
+  email: {
+		type: String,
+		index: true,
+    required: true,
     unique: true,
-    required: 'Admin name is required',
-    trim: true
-  },
+		match: /.+\@.+\..+/
+	},
   isValidated: {
     type: Boolean,
     default: false
