@@ -1,7 +1,6 @@
 var Admin = require('mongoose').model('Admin');
 
 exports.validate = function(req, res, next) {
-  console.log('admin.controller.validate');
   if (!req.admin.authenticate(req.body.password)) {
     next({errmsg:"password does not match admin email"});
   }
@@ -12,7 +11,6 @@ exports.validate = function(req, res, next) {
 };
 
 exports.adminByEmail = function(req, res, next) {
-  console.log('admin.controller.findByEmail');
   Admin.findOne({
     email: req.query.email || req.body.email
   }, function(err, admin) {
@@ -30,8 +28,6 @@ exports.adminByEmail = function(req, res, next) {
 };
 
 exports.create = function(req, res, next) {
-  console.log('in create');
-
   var email = req.body.email;
   var password = req.body.password;
   console.log("email " + email);
@@ -52,7 +48,6 @@ exports.startSession = function(req, res, next) {
 };
 
 exports.checkForSession = function(req, res, next) {
-  console.log("admin.controller.checkForSession");
   if (!req.session.admin) {
     res.render('common/pages/forbidden');
   } else {

@@ -1,8 +1,6 @@
 var Conference = require('mongoose').model('Conference');
 
 exports.conferenceByName = function(req, res, next) {
-  console.log('conferenceByName');
-  console.log(req.body.conferenceName);
   Conference.findOne({
     name: req.body.conferenceName
   }, function(err, conference) {
@@ -19,7 +17,6 @@ exports.conferenceByName = function(req, res, next) {
 };
 
 exports.conferenceById = function(req, res, next) {
-  console.log('conferenceById');
   Conference.findOne({
     _id: req.conferenceID
   }, function(err, conference) {

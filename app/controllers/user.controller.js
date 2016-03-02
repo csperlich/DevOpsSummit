@@ -11,7 +11,6 @@ transporter = nodemailer.createTransport({
 });
 
 exports.create = function(req, res, next) {
-  console.log('in create');
   var user = new User(req.body);
   user.save(function(err, user) {
     if (err) {
@@ -25,7 +24,6 @@ exports.create = function(req, res, next) {
 };
 
 exports.register = function(req, res, next) {
-  console.log('in register');
 
   var confirmationNumber = User.getNextConfirmationNumber();
   User.update(
@@ -44,14 +42,12 @@ exports.register = function(req, res, next) {
       } else {
         req.body.confirmationNumber = confirmationNumber;
         next();
-        //res.json({user: req.user, conference: req.conference, confirmationNumber: confirmationNumber});
       }
     }
   );
 };
 
 exports.unRegister = function(req, res, next) {
-  console.log('in unregister');
   User.update(
     { _id: req.user._id },
     {
@@ -72,7 +68,6 @@ exports.unRegister = function(req, res, next) {
 };
 
 exports.userByEmail = function(req, res, next) {
-  console.log('in userByEmail');
   User.findOne({
     email: req.query.email || req.body.email
   }, function(err, user) {
@@ -89,7 +84,6 @@ exports.userByEmail = function(req, res, next) {
 };
 
 exports.userByConfirmationNumber = function(req, res, next) {
-  console.log('in userByConfirmationNumber');
   User.findOne({
     'registrations.confirmationNumber': req.body.confirmationNumber
   }, function(err, user) {
@@ -112,15 +106,11 @@ exports.userByConfirmationNumber = function(req, res, next) {
 };
 
 exports.renderReservation = function(req, res, next) {
-  console.log('user.controller.renderReservation');
-  console.log(req.body.confirmationNumber);
   res.render('common/pages/reservation-page', {user: req.user,
     conference: req.conference, confirmationNumber: req.body.confirmationNumber});
   };
 
   exports.usersByConference = function(req, res, next) {
-    console.log('user.controller.usersByConferenceName');
-    console.log(req.conference._id);
     User.find({
       'registrations.registrationID': req.conference._id
     }, function(err, attendees) {
@@ -148,16 +138,13 @@ exports.renderReservation = function(req, res, next) {
       'Sincerely,<br> The Acme Global Summit Team'
     }, function(err, info) {
       if(err) {
-        console.log(err);
       } else {
-        console.log(info);
       }
     });
     next();
   };
 
   exports.checkIfAlreadyRegisterd = function(req, res, next) {
-    console.log('user.controller.checkIfAlreadyRegisterd');
     User.findOne({
       'registrations.registrationID': req.conference._id,
       email:req.body.email
@@ -165,7 +152,6 @@ exports.renderReservation = function(req, res, next) {
       if(err) {
         return next(err);
       }
-      console.log(user);
       if (user) {
         return next({errmsg:"already registerd"});
       }
@@ -174,8 +160,6 @@ exports.renderReservation = function(req, res, next) {
   };
 
   exports.verifyConfirmationNumber = function(req, res, next) {
-      console.log(req.user);
-      console.log(req.body.confirmationNumber);
       var isUserConfirmationNum = false;
       for (var i = 0; i < req.user.registrations.length; i++) {
         if (req.user.registrations[i].confirmationNumber === req.body.confirmationNumber) {

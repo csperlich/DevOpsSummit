@@ -33,7 +33,6 @@ var AdminSchema = new Schema({
 });
 
 AdminSchema.pre('save', function(next) {
-  console.log(this);
 	if (this.password) {
 		this.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
 		this.password = this.hashPassword(this.password);
