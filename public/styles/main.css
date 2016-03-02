@@ -1,3 +1,5 @@
+
+
 .btn-success {
   background: #23bab5;
   border-radius:0;
@@ -9,7 +11,7 @@
 .btn-success:hover,.btn-success:focus {
   background: rgba(26, 161, 157, 0);
   border: 2px solid #1aa19d;
-  color: #23BAB5;
+  color: #23bab5;
 }
 
 article[role="interact"], article[role="status"] {
@@ -19,7 +21,6 @@ article[role="interact"], article[role="status"] {
   webkit-transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
   padding: 30px 50px;
-  margin-bottom: 20px;
 }
 
 article[role="interact"] input[type="submit"] {
@@ -80,4 +81,20 @@ article[role="status"] .row div:first-child {
 }
 .nav-tab-holder {
   float: none;
+}
+
+.header{
+  background: #e6e6e6;
+}
+
+.header {
+  margin-bottom: 10px;
+}
+
+.header h1 {
+  font-weight: 300;
+}
+
+.footer {
+  margin-top: 10px;
 }
