@@ -33,8 +33,17 @@ module.exports = {
 The email section is necessary for sending confirmation emails to registrants of the event. If you are using a gmail account, you will have to enable [less secure apps](https://support.google.com/accounts/answer/6010255?hl=en).
 The rest of the file configures the project.
 
-After creating the configuration file:<br>
-In one terminal, start mondob ```$ mongod```<br>
+Also, before we start the server, we have to create the conference event in mongodb:<br>
+In one terminal, start mongodb ```$ mongod```<br>
+Then in another terminal:
+```
+$ mongo
+> use acme-summit
+> db.conferences.insert({"name" : "Acme Global Summit 2016", "address" : "223 Awesome St, Awesome Town, NY 22134, USA", "date":new Date("2015-09-09")});
+```
+
+After creating the configuration file and the conference event:<br>
+Make sure mongodb is running.<br>
 In another terminal, navigate to the project folder and start the server ```$ node server```
 
 
