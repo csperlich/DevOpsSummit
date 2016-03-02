@@ -16,9 +16,9 @@ $ cd DevOpsSummit
 $ npm install
 ```
 
-Before starting the server you will need to create and add a configuration<br> 
+Before starting the server you will need to create and add a configuration
 file at DevOpsSummit/config/env/development.js<br>
-The contents of the file should be as follows with your email and password replaced:
+The contents of the file should be as follows, with your email and password replaced:
 ```
 module.exports = {
   db: 'mongodb://localhost/acme-summit',
@@ -41,7 +41,7 @@ $ mongo
 > use acme-summit
 > db.conferences.insert({"name" : "Acme Global Summit 2016", "address" : "223 Awesome St, Awesome Town, NY 22134, USA", "date":new Date("2015-09-09")});
 ```
-
+The "name" field must have the exact value, "Acme Global Summit 2016", and the database must be called acme-summit<br><br>
 After creating the configuration file and the conference event:<br>
 Make sure mongodb is running.<br>
 In another terminal, navigate to the project folder and start the server ```$ node server```
