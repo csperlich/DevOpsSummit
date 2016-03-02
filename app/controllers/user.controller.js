@@ -172,3 +172,19 @@ exports.renderReservation = function(req, res, next) {
       next();
     });
   };
+
+  exports.verifyConfirmationNumber = function(req, res, next) {
+      console.log(req.user);
+      console.log(req.body.confirmationNumber);
+      var isUserConfirmationNum = false;
+      for (var i = 0; i < req.user.registrations.length; i++) {
+        if (req.user.registrations[i].confirmationNumber === req.body.confirmationNumber) {
+          isUserConfirmationNum = true;
+          break;
+        }
+      }
+      if (isUserConfirmationNum) {
+        return next();
+      }
+      next({errmsg:"not a valid confirmation number"});
+  };

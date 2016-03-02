@@ -10,7 +10,7 @@ module.exports = function(app) {
   //TODO: grab the confirmation number sent from the form, and verify the userByEmail
   //with it before user.unRegister
   app.route('/user/unregister')
-    .post(user.userByEmail, conference.conferenceByName, user.unRegister);
+    .post(user.userByEmail, conference.conferenceByName, user.verifyConfirmationNumber, user.unRegister);
 
   app.route('/user/checkReservation')
     .post(user.userByConfirmationNumber, conference.conferenceById, user.renderReservation);
