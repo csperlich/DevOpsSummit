@@ -12,9 +12,10 @@
       <div class="row">
         <div class="col-sm-12 nav-tab-holder">
           <ul class="nav nav-tabs row" role="tablist">
-            <li class="active col-sm-4 w3-theme-l3"><a href="#register" aria-controls="register" role="tab" data-toggle="tab">Register</a></li>
-            <li class="col-sm-4"><a href="#unRegister" aria-controls="unRegister" role="tab" data-toggle="tab">Un-Register</a></li>
-            <li class="col-sm-4"><a href="#checkStatus" aria-controls="checkStatus" role="tab" data-toggle="tab">Check Status</a></li>
+            <li class="active col-sm-3"><a href="#register" aria-controls="register" role="tab" data-toggle="tab">Register</a></li>
+            <li class="col-sm-3"><a href="#unRegister" aria-controls="unRegister" role="tab" data-toggle="tab">Un-Register</a></li>
+            <li class="col-sm-3"><a href="#checkStatus" aria-controls="checkStatus" role="tab" data-toggle="tab">Check Status</a></li>
+            <li class="col-sm-3"><a href="#returningUser" aria-controls="returningUser" role="tab" data-toggle="tab">Returning User</a></li>
           </ul>
         </div>
       </div>
@@ -82,6 +83,25 @@
                   <div class="form-group">
                     <input type="text" class="form-control" name="confirmationNumber" placeholder="ConfirmationNumber: e.g. 1LN6T570EI4AL52X65V5E ">
                   </div>
+                  <div class="form-group">
+                    <input type="submit" class="btn btn-success btn-block"  value="SUBMIT">
+                  </div>
+                </form>
+              </article>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="returningUser">
+          <div class="row">
+            <div class="col-sm-12">
+              <article role="interact">
+                <h3 class="text-center">Returning User</h3>
+                <p>If you've registered with us before, simply enter your email below to make your reservation.</p>
+                <form class="register" action="/user/reRegister" method="post">
+                  <div class="form-group">
+                    <input type="email" class="form-control" name="email" placeholder="Email Address">
+                  </div>
+                  <input type="text" name="conferenceName" hidden="true" value="Acme Global Summit 2016">
                   <div class="form-group">
                     <input type="submit" class="btn btn-success btn-block"  value="SUBMIT">
                   </div>

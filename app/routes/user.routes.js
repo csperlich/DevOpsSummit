@@ -14,4 +14,8 @@ module.exports = function(app) {
 
   app.route('/user/checkReservation')
     .post(user.userByConfirmationNumber, conference.conferenceById, user.renderReservation);
+
+  app.route('/user/reRegister')
+    .post(user.userByEmail, conference.conferenceByName, user.checkIfAlreadyRegisterd,
+      user.register, user.sendConfirmationEmail, user.renderReservation);
 };
