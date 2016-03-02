@@ -102,3 +102,17 @@ exports.userByConfirmationNumber = function(req, res, next) {
 exports.sendReservation = function(req, res, next) {
   res.render('common/pages/reservation-page', {user: req.user, conference: req.conference, confirmationNumber: req.confirmationNumber});
 };
+
+exports.usersByConference = function(req, res, next) {
+  console.log('user.controller.usersByConferenceName');
+  User.find({
+    'registrations.registrationID': req.conference._id
+  }, function(err, attendees) {
+    if (err) {
+      return next(err);
+    } else {
+      req.attendees = attendees;
+      next();
+    }
+  });
+};

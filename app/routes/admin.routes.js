@@ -1,5 +1,6 @@
 var user = require('../controllers/user.controller');
 var admin = require('../controllers/admin.controller.js');
+var conference = require('../controllers/conference.controller.js');
 
 module.exports = function(app) {
 
@@ -24,4 +25,11 @@ module.exports = function(app) {
       res.render('common/pages/admin/home');
     });
 
+  app.route('/admin/attendees')
+    .post(admin.checkForSession, conference.conferenceByName, user.usersByConference,
+      function(req, res, next) {
+        res.render('common/pages/admin/attendee-list', {
+          attendees: req.attendees
+        });
+      });
 };
