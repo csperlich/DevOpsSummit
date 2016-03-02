@@ -1,4 +1,14 @@
-var User = require('mongoose').model('User');
+var User = require('mongoose').model('User'),
+    nodemailer = require('nodemailer'),
+    config = require('../../config/config'),
+    emailCred = config.email,
+    transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: emailCred
+    }, {
+      from: emailCred.user,
+      headers: {}
+    });
 
 exports.create = function(req, res, next) {
   console.log('in create');
@@ -30,7 +40,7 @@ exports.register = function(req, res, next) {
       if (err) {
         return next(err);
       } else {
-        req.confirmationNumber = confirmationNumber;
+        req.body.confirmationNumber = confirmationNumber;
         next();
         //res.json({user: req.user, conference: req.conference, confirmationNumber: confirmationNumber});
       }
@@ -99,8 +109,11 @@ exports.userByConfirmationNumber = function(req, res, next) {
   });
 };
 
-exports.sendReservation = function(req, res, next) {
-  res.render('common/pages/reservation-page', {user: req.user, conference: req.conference, confirmationNumber: req.confirmationNumber});
+exports.renderReservation = function(req, res, next) {
+  console.log('user.controller.renderReservation');
+  console.log(req.body.confirmationNumber);
+  res.render('common/pages/reservation-page', {user: req.user,
+    conference: req.conference, confirmationNumber: req.body.confirmationNumber});
 };
 
 exports.usersByConference = function(req, res, next) {
@@ -116,4 +129,22 @@ exports.usersByConference = function(req, res, next) {
       next();
     }
   });
+};
+
+exports.sendConfirmationEmail = function(req, res, next) {
+  console.log('user.controller.sendconfirmationEmail');
+  console.log(req.user.email);
+  transporter.sendMail({
+    from: emailCred.user,
+    to: req.user.email,
+    subject: 'Acme Summit Confirmation',
+    html: '<p>Thank you for registering for'
+  }, function(err, info) {
+    if(err) {
+      console.log(err);
+    } else {
+      console.log(info);
+    }
+  });
+  next();
 };

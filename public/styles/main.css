@@ -95,6 +95,6 @@ article[role="status"] .row div:first-child {
   font-weight: 300;
 }
 
-.footer {
-  margin-top: 10px;
+.top-buffer {
+   margin-top: 10px;
 }

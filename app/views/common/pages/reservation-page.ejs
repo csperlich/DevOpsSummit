@@ -14,19 +14,23 @@
         <article role="status">
           <h3 class="text-center">Reservation Status</h3>
           <div class= "container">
-            <div class="row">
+            <div class="row top-buffer">
               <div class="col-sm-offset-1 col-sm-2 ">Event</div>
               <div class="col-sm-3"><%= conference.name %></div>
               <div class="col-sm-4"><%= conference.address %></div>
             </div>
-            <div class="row">
+            <div class="row top-buffer">
               <div class="col-sm-2 col-sm-offset-1">Attendee</div>
               <div class="col-sm-3"><%= user.name%></div>
               <div class="col-sm-4"><%= user.email%></div>
             </div>
-            <div class="row">
+            <div class="row top-buffer">
               <div class="col-sm-2 col-sm-offset-1">Status</div>
-              <div class="col-sm-3">You Are Registered<i class="fa fa-check"></i></div>
+              <div class="col-sm-5">You Are Registered<i class="fa fa-check"></i></div>
+            </div>
+            <div class="row top-buffer">
+              <div class="col-sm-2 col-sm-offset-1">Confirmation Number</div>
+              <div class="col-sm-5"><%= confirmationNumber %></div>
             </div>
           </div>
         </article>

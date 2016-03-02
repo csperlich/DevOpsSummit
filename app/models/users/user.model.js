@@ -39,6 +39,7 @@ var UserSchema = new Schema({
   }]
 });
 
+//Generate a uniquce confirmation based on unix time and random characters
 UserSchema.statics.chars = 'ABCDEFGHIJKLMNPQRSTUVWXYZ';
 UserSchema.statics.getNextConfirmationNumber = function() {
 	var letters = [];
@@ -60,4 +61,5 @@ UserSchema.statics.getNextConfirmationNumber = function() {
 	}
 	return output.join('');
 };
+
 mongoose.model('User', UserSchema);
