@@ -11,35 +11,42 @@
     <div class="container">
       <article role="status">
         <h3 class="text-center">Admin - Attendee List</h3>
-        <table class="table">
+        <button class="btn btn-success" id="printButton">Print List</button>
+        <table class="table" id="attendeeTable">
           <thead>
             <tr>
               <th>Name</th>
               <th>Email</th>
               <th>Company</th>
               <th>Title</th>
-              <th>Address></th>
+              <th>Address</th>
               <th>Phone</th>
             </tr>
           </thead>
           <tbody>
             <% for (var i=0; i < attendees.length; i++) { %>
-                  <tr>
-                    <td><%= attendees[i].name %></td>
-                    <td><%= attendees[i].email %></td>
-                    <td><%= attendees[i].company %></td>
-                    <td><%= attendees[i].title %></td>
-                    <td><%= attendees[i].address %></td>
-                    <td><%= attendees[i].phone %></td>
-                  </tr>
-            <% } %>
-          </tbody>
-        </table>
-      </article>
-    </div>
-  </main>
-  <footer>
-    <% include ../../partials/footer %>
-  </footer>
-</body>
-</html>
+              <tr>
+                <td><%= attendees[i].name %></td>
+                <td><%= attendees[i].email %></td>
+                <td><%= attendees[i].company %></td>
+                <td><%= attendees[i].title %></td>
+                <td><%= attendees[i].address %></td>
+                <td><%= attendees[i].phone %></td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </article>
+      </div>
+    </main>
+    <script>
+
+      $('#printButton').on('click',function(){
+        window.print();
+      });
+    </script>
+    <footer>
+      <% include ../../partials/footer %>
+    </footer>
+  </body>
+  </html>
