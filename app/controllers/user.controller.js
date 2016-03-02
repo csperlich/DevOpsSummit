@@ -159,11 +159,13 @@ exports.renderReservation = function(req, res, next) {
   exports.checkIfAlreadyRegisterd = function(req, res, next) {
     console.log('user.controller.checkIfAlreadyRegisterd');
     User.findOne({
-      'registrations.registrationID': req.conference._id
+      'registrations.registrationID': req.conference._id,
+      email:req.body.email
     }, function(err, user) {
       if(err) {
         return next(err);
       }
+      console.log(user);
       if (user) {
         return next({errmsg:"already registerd"});
       }

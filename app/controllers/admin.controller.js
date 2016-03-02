@@ -20,8 +20,9 @@ exports.adminByEmail = function(req, res, next) {
       return next(err);
     } else {
       if (!admin) {
-        next({errmsg:"no user available for email address: " + email})
+        next({errmsg:"no user available for email address"})
       }
+      console.log('admin -> ' + admin);
       req.admin = admin;
       next();
     }
