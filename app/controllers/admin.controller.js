@@ -2,11 +2,13 @@ var Admin = require('mongoose').model('Admin');
 
 exports.validate = function(req, res, next) {
   console.log('admin.controller.validate');
-  if (req.admin.authenticate(req.body.password)) {
-    next();
-  } else {
+  if (!req.admin.authenticate(req.body.password)) {
     next({errmsg:"password does not match admin email"});
   }
+  if (!req.admin.isValidated) {
+    next({errmsg:"you do not yet have administrive priveleges"});
+  }
+  next();
 };
 
 exports.adminByEmail = function(req, res, next) {
