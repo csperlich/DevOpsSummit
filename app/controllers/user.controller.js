@@ -134,11 +134,16 @@ exports.usersByConference = function(req, res, next) {
 exports.sendConfirmationEmail = function(req, res, next) {
   console.log('user.controller.sendconfirmationEmail');
   console.log(req.user.email);
+  console.log(req)
   transporter.sendMail({
     from: emailCred.user,
     to: req.user.email,
     subject: 'Acme Summit Confirmation',
-    html: '<p>Thank you for registering for'
+    html: '<h3>' + req.user.name + ',</h3>' +
+          '<p>Thank you for registering for the ' + req.conference.name + '!</p>' +
+          '<p>Your confirmation number is: ' + req.body.confirmationNumber + '</p>' +
+          "<p>We can't wait to see you at the DevOps conference!</p><br>" +
+          'Sincerely,<br> The Acme Global Summit Team'
   }, function(err, info) {
     if(err) {
       console.log(err);
