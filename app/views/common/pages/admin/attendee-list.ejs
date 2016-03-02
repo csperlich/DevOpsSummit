@@ -1,22 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <% include ../../partials/head %>
-  </head>
-  <body>
-    <header>
-      <% include ../../partials/header %>
-    </header>
-    <main>
-      <div class="container">
-        <article role="status">
-          <h3 class="text-center">Admin - Attendee List</h3>
-
-        </article>
-      </div>
-    </main>
-    <footer>
-      <% include ../../partials/footer %>
-    </footer>
-  </body>
+<head>
+  <% include ../../partials/head %>
+</head>
+<body>
+  <header>
+    <% include ../../partials/header %>
+  </header>
+  <main>
+    <div class="container">
+      <article role="status">
+        <h3 class="text-center">Admin - Attendee List</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Company</th>
+              <th>Title</th>
+              <th>Address></th>
+              <th>Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for (var i=0; i < attendees.length; i++) { %>
+                  <tr>
+                    <td><%= attendees[i].name %></td>
+                    <td><%= attendees[i].email %></td>
+                    <td><%= attendees[i].company %></td>
+                    <td><%= attendees[i].title %></td>
+                    <td><%= attendees[i].address %></td>
+                    <td><%= attendees[i].phone %></td>
+                  </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </article>
+    </div>
+  </main>
+  <footer>
+    <% include ../../partials/footer %>
+  </footer>
+</body>
 </html>

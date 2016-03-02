@@ -28,6 +28,8 @@ module.exports = function(app) {
   app.route('/admin/attendees')
     .post(admin.checkForSession, conference.conferenceByName, user.usersByConference,
       function(req, res, next) {
+        console.log(req.attendees);
+        console.log(req.conference);
         res.render('common/pages/admin/attendee-list', {
           attendees: req.attendees
         });

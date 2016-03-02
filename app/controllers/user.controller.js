@@ -105,6 +105,7 @@ exports.sendReservation = function(req, res, next) {
 
 exports.usersByConference = function(req, res, next) {
   console.log('user.controller.usersByConferenceName');
+  console.log(req.conference._id);
   User.find({
     'registrations.registrationID': req.conference._id
   }, function(err, attendees) {
