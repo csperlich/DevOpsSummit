@@ -7,7 +7,7 @@
   <header>
     <% include ../partials/header %>
   </header>
-  <div class="container">
+  <div class="container" data-toggle="validator">
     <div class="register-unregister-status">
       <div class="row">
         <div class="col-sm-12 nav-tab-holder">
@@ -27,22 +27,23 @@
                 <h3 class="text-center">Register</h3>
                 <form class="register" action="user/register" method="post">
                   <div class="form-group">
-                    <input type="text" class="form-control" name="name" placeholder="Name">
+                    <input type="text" class="form-control" name="name" placeholder="Name" required>
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control" name="address" placeholder="Address">
+                    <input type="text" class="form-control" name="address" placeholder="Address" required>
                   </div>
                   <div class="form-group">
-                    <input type="tel" class="form-control" name="phone" placeholder="Phone Number">
+                    <input type="tel" class="form-control" name="phone" placeholder="Phone Number" required>
                   </div>
                   <div class="form-group">
-                    <input type="email" class="form-control" name="email" placeholder="Email Address">
+                    <input type="email" class="form-control" name="email" placeholder="Email Address"
+                      data-error="Bruh, that email address is invalid" required>
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control" name="company" placeholder="Company">
+                    <input type="text" class="form-control" name="company" placeholder="Company" required>
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control" name="title" placeholder="Job Title">
+                    <input type="text" class="form-control" name="title" placeholder="Job Title" required>
                   </div>
                   <div class="form-group">
                     <input type="submit" class="btn btn-success btn-block"  value="SUBMIT">
@@ -60,10 +61,11 @@
                 <h3 class="text-center">Un-Register</h3>
                 <form class="register" action="/user/unregister" method="post">
                   <div class="form-group">
-                    <input type="email" class="form-control" name="email" placeholder="Email Address">
+                    <input type="email" class="form-control" name="email" placeholder="Email Address" required>
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control" name="confirmationNumber" placeholder="ConfirmationNumber: e.g. 1LN6T570EI4AL52X65V5E ">
+                    <input type="text" class="form-control" name="confirmationNumber"
+                      placeholder="ConfirmationNumber: e.g. 1LN6T570EI4AL52X65V5E" required>
                   </div>
                   <input type="text" name="conferenceName" hidden="true" value="Acme Global Summit 2016">
                   <div class="form-group">
@@ -81,7 +83,8 @@
                 <h3 class="text-center">Check Status</h3>
                 <form class="register" action="/user/checkReservation" method="post">
                   <div class="form-group">
-                    <input type="text" class="form-control" name="confirmationNumber" placeholder="ConfirmationNumber: e.g. 1LN6T570EI4AL52X65V5E ">
+                    <input type="text" class="form-control" name="confirmationNumber"
+                      placeholder="ConfirmationNumber: e.g. 1LN6T570EI4AL52X65V5E" required>
                   </div>
                   <div class="form-group">
                     <input type="submit" class="btn btn-success btn-block"  value="SUBMIT">
@@ -99,7 +102,7 @@
                 <p>If you've registered with us before, simply enter your email below to make your reservation.</p>
                 <form class="register" action="/user/reRegister" method="post">
                   <div class="form-group">
-                    <input type="email" class="form-control" name="email" placeholder="Email Address">
+                    <input type="email" class="form-control" name="email" placeholder="Email Address" required>
                   </div>
                   <input type="text" name="conferenceName" hidden="true" value="Acme Global Summit 2016">
                   <div class="form-group">

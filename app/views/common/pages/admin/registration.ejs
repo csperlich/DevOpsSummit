@@ -7,10 +7,10 @@
   <header>
     <% include ../../partials/header %>
   </header>
-  <div class="container">
+  <div class="container" data-toggle="validator">
     <article role="interact">
       <h3 class="text-center">Admin Registration</h3>
-      <form class="register" data-toggle="validator" action="/admin/register" method="post">
+      <form class="register" action="/admin/register" method="post">
         <div class="form-group">
           <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-error="Invalid email address" required>
           <div class="help-block with-errors"></div>

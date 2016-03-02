@@ -2,29 +2,66 @@
 <html>
 <head>
   <% include ../../partials/head %>
+  <script>
+  $(document).ready(function(){
+    $("form").submit( function() {
+        var url = $(this).attr('action');
+        $.ajax({
+            type: $(this).attr('method'),
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            success: function( response ) {
+                window.location = '/admin/home';
+            },
+            error: function(response) {
+              $('.modal-body')[0].innerText = JSON.parse(response.responseText).error.errmsg;
+              $('#myModal').modal('show');
+            }
+        });
+        return false;
+    });
+});
+</script>
 </head>
 <body>
   <header>
     <% include ../../partials/header %>
   </header>
-  <div class="container">
+  <div id=result-div
+  <div class="container" data-toggle="validator">
     <div class="register-unregister-status">
       <div class="row">
         <div class="col-sm-12">
           <article role="interact">
             <h3 class="text-center">Admin Login</h3>
-            <form class="register" action="/admin/login" method="post">
+            <form class="register" action="/admin/login" method="post" >
               <div class="form-group">
-                <input type="email" class="form-control" name="email" placeholder="Username">
+                <input type="email" class="form-control" name="email" placeholder="Email" required>
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" name="password" placeholder="Password">
+                <input type="password" class="form-control" name="password" placeholder="Password" required>
               </div>
               <div class="form-group">
                 <input type="submit" class="btn btn-success btn-block"  value="SUBMIT">
               </div>
             </form>
           </article>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Error Message</h4>
+        </div>
+        <div class="modal-body">
+          <p>Something went wrong</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
